@@ -1,5 +1,5 @@
 // Require packages
-var express                 = require("express"), 
+var express                 = require("express"),
     app                     = express(),
     bodyParser              = require("body-parser"),
     methodOverride          = require("method-override"),
@@ -11,8 +11,7 @@ var express                 = require("express"),
 // Require models
 var Campground              = require("./models/campgrounds"),
     Comment                 = require("./models/comment"),
-    User                    = require("./models/user"),
-    seedDB                  = require("./seeds")
+    User                    = require("./models/user")
 
 // Require routes
 var commentRoutes     = require("./routes/comments"),
@@ -24,12 +23,9 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("/public"));
 app.set("view engine", "ejs");
 app.use(flash())
-
-// Seed the database
-// seedDB();
 
 // Passport configuration
 app.use(require("express-session")({

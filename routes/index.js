@@ -12,7 +12,7 @@ router.get("/", function (req, res) {
 // Show register form
 router.get("/register", function(req, res){
     res.render("register")
-})
+});
 
 // Register logic
 router.post("/register", function(req, res){
